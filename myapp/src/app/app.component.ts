@@ -1,24 +1,14 @@
-import { Component }     from '@angular/core';
-import { MyDataService } from './myDataService';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<h1>Hello world!  {{title}}</h1>
-  <h2>My name is {{myName}}</h2>
-  <ul><li *ngFor="let name of names">{{name}}</li></ul>`,
-  // 'providers' allows you to create and pass an instance
-  // of the class to the constructor header.
-  providers: [MyDataService]
+  template:
+    `<h1>This is the header</h1>
+    <nav>
+    <a routerLink="/page-a" routerLinkActive="active">A</a> |
+    <a routerLink="/page-b" routerLinkActive="active">B</a>
+    </nav>
+    <!-- Where router should display a view -->
+    <router-outlet></router-outlet>`
 })
-export class AppComponent {
-  public title = 'This is Angular!';
-  names: Array<any>;
-
-  // Create instance of 'MyDataService' right in the constructor
-  // header.
-  constructor(myDataService: MyDataService) {
-    // Use service to call getNames() method.
-    this.names = myDataService.getNames();
-    this.myName =  myDataService.getMyName();
-  }
-}
+export class AppComponent { }
